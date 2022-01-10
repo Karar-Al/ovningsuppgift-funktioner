@@ -74,6 +74,7 @@ window.onload = function () {
 
     if (isNaN(num)) {
       alert('Det du angav var inte ett nummer! Försök igen.')
+      return
     }
 
     if (num === randomNumber) {
@@ -189,7 +190,7 @@ six.onclick = sixFunction
  */
 let str = ''
 function sevenFunction () {
-  const answer = prompt('Mata in en sträng, avsluta med en tom rad eller en punkt.')
+  const answer = prompt('Mata in något, avsluta med en tom rad eller en punkt ".".')
 
   str += answer
 
@@ -216,3 +217,39 @@ function eightFunction () {
   alert('Öppna upp konsolen för utmatningar.')
 }
 eight.onclick = eightFunction
+
+/**
+ * 8 Skriv ett program som frågar användaren efter ett tal. 
+ * Programmet ska loopa så länge som talet är större än 2. Varje loop 
+ * ska programmet välja: om talet är udda, multiplicera talet med 3 
+ * och lägg till 1. Om talet är jämnt, dela det med 2. Skriv ut det nya 
+ * talet varje varv i loopen.
+ */
+function nineFunction () {
+  const answer = prompt('Mata in ett TAL över 2.')
+
+  const num = Number(answer)
+
+  if (isNaN(num)) {
+    alert('Det du angav var inte ett nummer! Försök igen.')
+    return
+  }
+
+  if (num <= 2) {
+    alert('Talet är inte större än 2!')
+    return
+  }
+
+  // Udda, från libraryn "is-odd" på NPM :)
+  let isOdd = (num) => (num % 2) === 1
+  if (isOdd(num)) {
+    alert('Svar: ' + ((num * 3) + 1))
+  } else if (!isOdd(num)) {
+    // Är jämnt
+    alert('Svar: ' + (num / 2))
+  }
+
+  nineFunction()
+  console.log(num)
+}
+nine.onclick = nineFunction
