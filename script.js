@@ -19,7 +19,7 @@ function oneFunction() {
   }
 
   alert('Fel lösenord!')
-  
+
 }
 one.onclick = oneFunction
 
@@ -27,7 +27,7 @@ one.onclick = oneFunction
  * 2 Skriv ett program som frågar användaren efter ett tal. Det ska 
  * skriva ut om talet är mindre än 100, lika med 100 eller större.
  */
-function twoFunction () {
+function twoFunction() {
   const tal = prompt('Ge mig ett tal')
 
   if (tal >= 100) {
@@ -57,7 +57,7 @@ two.onclick = twoFunction
 window.onload = function () {
   let randomNumber = 0
   let guesses = 0
-  function randomizeNumber () {
+  function randomizeNumber() {
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
     let min = Math.ceil(1)
     let max = Math.floor(100)
@@ -66,7 +66,7 @@ window.onload = function () {
 
   randomizeNumber()
 
-  function threeFunction () {
+  function threeFunction() {
     const answer = prompt('Gissa talet mellan 1 och 100:')
     guesses++
 
@@ -100,7 +100,7 @@ window.onload = function () {
  * ska januari bli 1 och december 12. Använd switch. Jämför din 
  * lösning med en klasskamrat när du är klar
  */
-function fourFunction () {
+function fourFunction() {
   const mon = prompt('Ange en månad:')
 
   let answer = 0
@@ -156,11 +156,11 @@ four.onclick = fourFunction
  * 5 Skriv ett program som skriver ut talen 1 till 16 med hjälp av en 
  * loop.
  */
-function fiveFunction () {
+function fiveFunction() {
   for (let index = 0; index < 16; index++) {
-    console.log(index+1)
+    console.log(index + 1)
   }
-  alert('Öppna upp konsolen för utmatningar.')
+  alert('Öppna upp konsolen för utmatningen.')
 }
 five.onclick = fiveFunction
 
@@ -170,7 +170,7 @@ five.onclick = fiveFunction
  * sedan dela variabeln med 2.
  */
 const tal = 65536
-function sixFunction () {
+function sixFunction() {
   let t = tal
   while (t > 2) {
     console.log(t)
@@ -189,7 +189,7 @@ six.onclick = sixFunction
  * loopa tills användaren skickar en tom sträng eller en punkt.
  */
 let str = ''
-function sevenFunction () {
+function sevenFunction() {
   const answer = prompt('Mata in något, avsluta med en tom rad eller en punkt ".".')
 
   str += answer + ' '
@@ -210,11 +210,11 @@ seven.onclick = sevenFunction
  * 7b Skriv ett program som skriver ut de jämna talen 20 till 2 i den 
  * ordningen, med hjälp av en loop.
  */
-function eightFunction () {
-  for (let index = 20; index > 0; index-=2) {
+function eightFunction() {
+  for (let index = 20; index > 0; index -= 2) {
     console.log(index)
   }
-  alert('Öppna upp konsolen för utmatningar.')
+  alert('Öppna upp konsolen för utmatningen.')
 }
 eight.onclick = eightFunction
 
@@ -225,7 +225,7 @@ eight.onclick = eightFunction
  * och lägg till 1. Om talet är jämnt, dela det med 2. Skriv ut det nya 
  * talet varje varv i loopen.
  */
-function nineFunction () {
+function nineFunction() {
   const answer = prompt('Mata in ett TAL över 2.')
 
   const num = Number(answer)
@@ -253,3 +253,115 @@ function nineFunction () {
   console.log(num)
 }
 nine.onclick = nineFunction
+
+/**
+ * a Vad kommer följande kod att skriva ut?
+ * let text = ''
+ * for( let i=0; i<6; i++ ) {
+ *   for( let j=0; j<8; j++ ) {
+ *     if( (i + j) % 2 === 0) text += '#'
+ *     else text += '.'
+ *   }
+ *   text += '\n'
+ * }
+ * console.log(text)
+ * Ändra koden så att den skriver ut:
+ * 9b 9c 9d 9e 9f 9g
+ * #....... #....... ..###... ..#..... ....##.. #....#..
+ * #....... .#...... ..###... ..#..... ....#... .#..#...
+ * #....... ..#..... ..###... ######## ...##... ..##....
+ * #....... ...#.... ..###... ..#..... ..#.#... ..##....
+ * #....... ....#... ..###... ..#..... .#..#... .#..#...
+ * #....... .....#.. ..###... ..#..... #...#... #....#..
+ */
+function tenFunction() {
+  let text = ''
+  for (let i = 0; i < 6; i++) {
+    for (let j = 0; j < 8; j++) {
+      if (j === 0) text += '#'
+      else text += '.'
+    }
+    text += '\n'
+  }
+  console.log(text)
+
+  text = ''
+  for (let i = 0; i < 6; i++) {
+    for (let j = 0; j < 8; j++) {
+      if (i === j) text += '#'
+      else text += '.'
+    }
+    text += '\n'
+  }
+  console.log(text)
+
+  text = ''
+  for (let i = 0; i < 6; i++) {
+    for (let j = 0; j < 8; j++) {
+      if (j >= 2 && j < 5) text += '#'
+      else text += '.'
+    }
+    text += '\n'
+  }
+  console.log(text)
+
+  text = ''
+  for (let i = 0; i < 6; i++) {
+    for (let j = 0; j < 8; j++) {
+      if (i === 2 || j === 2) text += '#'
+      else text += '.'
+    }
+    text += '\n'
+  }
+  console.log(text)
+
+  /**
+   * ij0 1 2 3 4 5 6 7
+   * 0 . . . . # # . .
+   * 1 . . . . # . . .
+   * 2 . . . # # . . .
+   * 3 . . # . # . . .
+   * 4 . # . . # . . .
+   * 5 # . . . # . . .
+   */
+
+  // 012345
+  // 543210
+
+  /**
+   * 0 === 5 - 0 = false // i = 0, j = 0
+   * 1 === 5 - 0 = false // i = 1, j = 0
+   * ...
+   * 5 === 5 - 0 = true // i = 5, j = 0
+   * 0 === 5 - 1 = false // i = 0, j = 1
+   * ...
+   * 0 === 5 - 5 = true // i = 0, j = 5
+   * 1 === 5 - 1 = false // i = 1, j = 1
+   * ...
+   * 5 === 5 - 5 = true // i = 5, j = 5
+   */
+  text = ''
+  for (let i = 0; i < 6; i++) {
+    for (let j = 0; j < 8; j++) {
+      if (i === 5 - j || j === 4) text += '#'
+      else text += '.'
+    }
+    text += '\n'
+  }
+  console.log(text)
+
+  text = ''
+  for (let i = 0; i < 6; i++) {
+    for (let j = 0; j < 8; j++) {
+      if (i === j || i === 5 - j) text += '#'
+      else text += '.'
+    }
+    text += '\n'
+  }
+  console.log(text)
+
+  alert('Öppna upp konsolen för utmatningen.')
+}
+ten.onclick = tenFunction
+// https://codepen.io/kyh-karar/pen/poWOMxM?editors=0011
+
