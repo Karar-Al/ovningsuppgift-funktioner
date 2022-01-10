@@ -185,14 +185,14 @@ six.onclick = sixFunction
  * sträng. Så länge som strängen inte är en tom sträng så ska 
  * programmet lägga ihop den med tidigare strängar, med ett 
  * mellanrum. Om användaren t.ex. har skrivit "ord1" tidigare och 
- * skriver "ord2" ska den nya strängen bli "ord1	ord2". Fortsätt 
+ * skriver "ord2" ska den nya strängen bli "ord1 ord2". Fortsätt 
  * loopa tills användaren skickar en tom sträng eller en punkt.
  */
 let str = ''
 function sevenFunction () {
   const answer = prompt('Mata in något, avsluta med en tom rad eller en punkt ".".')
 
-  str += answer
+  str += answer + ' '
 
   if (answer === '') {
     alert(str)
