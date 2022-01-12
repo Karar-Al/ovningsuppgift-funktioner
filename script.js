@@ -604,3 +604,107 @@ function twentyfiveFunction (str) {
   return str.split('').reverse().join('')
 }
 twentyfive.onclick = () => alert(twentyfiveFunction('baklänges'))
+
+/**
+ * 15 Skriv en funktion factorial(n) som räknar ut fakulteten för ett 
+ * heltal med en loop. Fakulteten tar man genom att multiplicera talet 
+ * med alla mindre tal ner till 1.
+ * Exempel: 1! ==	1,	2! ==	2*1, 4! == 4*3*2*1 osv.
+ */
+function factorial (n) {
+  let res = 1
+  for (let index = 1; index <= n; index++) {
+    res *= index
+  }
+  return res
+}
+twentysix.onclick = () => alert(factorial(10))
+
+/**
+ * 16 Skriv en ny funktion som beräknar fakulteten rekursivt.
+ */
+function twentysevenFunction (n) {
+  if (n === 1) {
+    return 1
+  } else {
+    return n * twentysevenFunction(n-1)
+  }
+}
+twentyseven.onclick = () => alert(twentysevenFunction(10))
+
+/**
+ * 17 Fibonacci-tal är en talserie som börjar med 0, 1. Sedan får man 
+ * nästa tal i talserien genom att lägga ihop de två föregående. 
+ * Exempel: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, … Skriv en funktion 
+ * fibonacci(n) som beräknar det n:te Fibonacci-talet rekursivt. 
+ * Extrauppgift: gör en funktion som räknar ut det med en loop.
+ */
+function fibonacci (n) {
+  if (n < 2) {
+    return n
+  } else {
+    return fibonacci(n-1) + fibonacci(n-2)
+  }
+}
+function fibonacciLoop (n) {
+  let arr = [0 , 1]
+
+  for (let index = 2; index <= n; index++) {
+    arr[index] = arr[index - 1] + arr[index - 2]
+  }
+
+  return arr[n]
+}
+twentyeight.onclick = () => alert(fibonacci(9))
+twentyeightloop.onclick = () => alert(fibonacci(9))
+
+/**
+ * 18 Skriv en rekursiv funktion som tar en sträng som parameter och 
+ * returnerar en ny sträng, som är den gamla strängen baklänges. 
+ * Tips: använd string.substring()
+ */
+function twentynineFunction (str, index) {
+  console.log(index)
+  if (typeof index === 'undefined') {
+    index = str.length - 1
+  }
+
+  if (index === 0) {
+    return str[0]
+  } else {
+    return str[index] + twentynineFunction(str, index-1)
+  }
+}
+twentynine.onclick = () => alert(twentynineFunction('baklänges'))
+
+/**
+ * 19a Skriv en rekursiv funktion som summerar alla tal i en lista. Tips: 
+ * låt funktionen ta två parametrar, listan och en variabel med namnet 
+ * index som har defaultvärde 0.
+ */
+function thirtyFunction (arr, index = 0) {
+  if (index >= arr.length - 1) {
+    return arr[arr.length - 1]
+  } else {
+    return arr[index] + thirtyFunction(arr, index+1)
+  }
+}
+thirty.onclick = () => alert(thirtyFunction([1,2,3,4]))
+
+/**
+ * 19b Skriv en rekursiv funktion som returnerar det minsta talet i en 
+ * lista.
+ */
+function thirtyoneFunction (arr, index = 0) {
+  if (index >= arr.length - 1) {
+    return arr[0]
+  } else {
+    if (arr[0] > arr[1]) {
+      arr.shift()
+    } else {
+      arr.splice(1, 1)
+    }
+    return thirtyoneFunction(arr)
+  }
+}
+thirtyone.onclick = () => alert(thirtyoneFunction([23,4,5,19,4,7,3,1,100,0.1,50,3,2]))
