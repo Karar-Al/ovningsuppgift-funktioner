@@ -737,7 +737,7 @@ function thirtytwoFunction(color, element) {
 //     if (child.children) thirtytwoFunction(color, child)
 //   }
 // }
-// thirtytwo.onclick = () => thirtytwoFunction('turquoise', document.body)
+thirtytwo.onclick = () => thirtytwoFunction('turquoise', document.body)
 
 /**
  * 21 Skriv en rekursiv funktion som tar ett DOM-element och en 
