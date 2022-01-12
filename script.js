@@ -717,6 +717,7 @@ thirtyone.onclick = () => alert(thirtyoneFunction([23,4,5,19,4,7,3,1,100,0.1,50,
  * @param {string} color 
  * @param {HTMLDivElement} element 
  */
+// This one sucks! Must be a better way of doing this.
 function thirtytwoFunction(color, element) {
   if (element.firstElementChild) {
     thirtytwoFunction(color, element.firstElementChild)
@@ -727,8 +728,16 @@ function thirtytwoFunction(color, element) {
     thirtytwoFunction(color, element.nextElementSibling)
     element.style.backgroundColor = color
   }
-} // This one sucks! Must be a better way of doing this.
-thirtytwo.onclick = () => thirtytwoFunction('turquoise', document.body)
+}
+// Annorlunda lösning, med en loop & rekursion.
+// function thirtytwoFunction(color, element) {
+//   for (let index = 0; index < element.children.length; index++) {
+//     let child = element.children[index]
+//     child.style.backgroundColor = color
+//     if (child.children) thirtytwoFunction(color, child)
+//   }
+// }
+// thirtytwo.onclick = () => thirtytwoFunction('turquoise', document.body)
 
 /**
  * 21 Skriv en rekursiv funktion som tar ett DOM-element och en 
