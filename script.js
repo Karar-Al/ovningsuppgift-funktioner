@@ -1,4 +1,9 @@
-alert('Öppna upp konsolen för utmatningen.')
+
+document.onclick = () => {
+  alert('Öppna upp konsolen för utmatningen.')
+  document.onclick = undefined
+}
+
 /**
  * 2 Kontrollstrukturer och programflöde
  * 1 Skriv ett program som frågar användaren efter ett lösenord. Hitta 
@@ -371,10 +376,9 @@ ten.onclick = tenFunction
  * returnerar resultatet.
  */
 function add (a, b) {
-  
   return a + b
 }
-eleven.onclick = () => console.log(add(1,5))
+eleven.onclick = () => alert(add(1,5))
 
 /**
  * 2b Skriv en funktion med namnet multi som multiplicerar tre tal 
@@ -382,10 +386,9 @@ eleven.onclick = () => console.log(add(1,5))
  * med färre än tre parametrar?
  */
 function multi (a, b, c) {
-  
   return a * b * c
 }
-twelve.onclick = () => console.log(multi(5,2,3))
+twelve.onclick = () => alert(multi(5,2,3))
 twelvebroken.onclick = () => console.log(multi(5,2))
 
 /**
@@ -394,10 +397,9 @@ twelvebroken.onclick = () => console.log(multi(5,2))
  * Använd funktionerna add och multi.
  */
 function thirteenFunction (a, b, c, d) {
-  
   return add(multi(a, b, c), d)
 }
-thirteen.onclick = () => console.log(thirteenFunction(5,2,7,1))
+thirteen.onclick = () => alert(thirteenFunction(5,2,7,1))
 
 /**
  * 3 Skriv en funktion som tar tre parametrar: name, city och 
@@ -406,7 +408,6 @@ thirteen.onclick = () => console.log(thirteenFunction(5,2,7,1))
  * med	favvofärg	blått".
  */
 function fourteenFunction (name, city, favoriteColor) {
-  
   console.log('Välkommen ' + name + ' från ' + city + ' med favvofärg ' + favoriteColor)
 }
 fourteen.onclick = () => fourteenFunction('Namn', 'Göteborg', 'Blått')
@@ -418,8 +419,6 @@ fourteen.onclick = () => fourteenFunction('Namn', 'Göteborg', 'Blått')
  * noll, isNaN(variabel).
  */
 function fifteenFunction (str) {
-  
-
   // const num = str - 0 // Why? Ser kryptiskt ut.
   // Out with the old, in with the new:
   const num = Number(str)
@@ -427,7 +426,7 @@ function fifteenFunction (str) {
   // TERNARY OPERATOR
   return isNaN(num) ? str : num
 }
-fifteen.onclick = () => console.log(fifteenFunction('15'))
+fifteen.onclick = () => alert(fifteenFunction('15'))
 
 /**
  * 5 Skriv en funktion som tar två parametrar och talar om ifall de är 
@@ -437,24 +436,20 @@ fifteen.onclick = () => console.log(fifteenFunction('15'))
  * sameDataType(5, '5')	 	 → false.
  */
 function sameDataType (type1, type2) {
-  
-
   // Ez pz, but not good enough. Example: typeof NaN === 'number' // Why ????
   return typeof type1 === typeof type2
 }
-sixteen.onclick = () => console.log(sameDataType('test', 'topp'))
-sixteenTwo.onclick = () => console.log(sameDataType(5, '5'))
+sixteen.onclick = () => alert(sameDataType('test', 'topp'))
+sixteenTwo.onclick = () => alert(sameDataType(5, '5'))
 
 /**
  * 6 Skriv en funktion som avrundar ett tal till två decimaler. Tips: man 
  * kan använda Math.round(x) för att avrunda ett tal till närmast heltal
  */
 function seventeenFunction () {
-  
-
   return (11.256531).toFixed(2)
 }
-seventeen.onclick = () => console.log(seventeenFunction())
+seventeen.onclick = () => alert(seventeenFunction())
 
 /**
  * 7 Skriv en funktion med namnet paragraph, som tar en parameter. 
@@ -462,11 +457,9 @@ seventeen.onclick = () => console.log(seventeenFunction())
  * paragraph('hej')	==	'<p>hej</p>'
  */
 function paragraph (text) {
-  
-
   return '<p>' + text + '</p>'
 }
-eighteen.onclick = () => console.log(paragraph('hej'))
+eighteen.onclick = () => alert(paragraph('hej'))
 
 /**
  * 8 Skriv en funktion som säger hur många dagar en månad har. 
@@ -490,7 +483,7 @@ function daysInMonth(month) {
       break
   }
 }
-nineteen.onclick = () => console.log(daysInMonth('jan'))
+nineteen.onclick = () => alert(daysInMonth('jan'))
 
 /**
  * 9 Skriv en funktion som returnerar de tre första tecknen i en sträng. 
@@ -501,7 +494,7 @@ nineteen.onclick = () => console.log(daysInMonth('jan'))
 function twentyFunction () {
   return 'programmering'.substring(0, 3)
 }
-twenty.onclick = () => console.log(twentyFunction())
+twenty.onclick = () => alert(twentyFunction())
 
 /**
  * 10 Skriv en funktion som du kallar year som plockar ut året från en 
@@ -515,4 +508,99 @@ function year (yyyymmdd) {
   // return yyyymmdd.split('-').unshift()
   // return yyyymmdd.substring(0, 4)
 }
-twentyone.onclick = () => console.log(year('2016-11-02'))
+twentyone.onclick = () => alert(year('2016-11-02'))
+
+/**
+ * 11 Skriv två funktioner med namnen month och day, som plockar 
+ * ut månad respektive dag ur en datumsträng som i uppgift 10. Skriv 
+ * med hjälp av dem en funktion med namnet daysBetween som 
+ * räknar ut hur många dagar det är mellan två datum. Du kan 
+ * förenkla funktionen genom att låtsas att alla månader har 30 dagar.
+ * Exempel: daysBetween('2017-08-30', '2017-09-02') == 4
+ */
+function month (yyyymmdd) {
+  return Number(yyyymmdd.match(/^\d\d\d\d-(\d\d)/)[1])
+  // return yyyymmdd.split('-')[1]
+  // return yyyymmdd.substring(5, 7)
+}
+function day (yyyymmdd) {
+  return Number(yyyymmdd.match(/^\d\d\d\d-\d\d-(\d\d)/)[1])
+  // return yyyymmdd.split('-').pop()
+  // return yyyymmdd.substring(8, 10)
+}
+
+// https://gist.github.com/xposedbones/75ebaef3c10060a3ee3b246166caab56
+const map = (current, in_min, in_max, out_min, out_max) => {
+  return (current - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
+function daysBetween (date1, date2) {
+  const m1 = month(date1)
+  const m2 = month(date2)
+
+  const d1 = day(date1)
+  const d2 = day(date2)
+
+  let days = 0
+
+  const monthsBetween =  m1 > m2 ? m1 - m2 : -(m1 - m2)
+  const daysBetween = map(d1, 0, 30, 30, 0) + d2
+
+  // Assuming every month is 30 days.
+  days += ((monthsBetween > 0 ? monthsBetween - 1 : monthsBetween) * 30)
+
+  days += daysBetween
+
+  return days
+}
+twentytwo.onclick = () => alert(daysBetween('2017-08-30', '2017-09-02'))
+
+/**
+ * 12 Skriv en funktion som översätter en temperatur i Fahrenheit till 
+ * Celsius. Den ska ta en parameter och returnera ett värde. Formeln 
+ * finns på den här sidan
+ */
+function twentythreeFunction (t) {
+  return (((t-32)*5) / 9)
+}
+twentythree.onclick = () => alert(twentythreeFunction(100))
+
+/**
+ * 13 Skriv en funktion som returnerar summan av de 100 första 
+ * heltalen. Använd en loop. Förbättra sedan funktionen så att den tar 
+ * en parameter, som är hur många tal som ska läggas ihop.
+ */
+function twentyfourFunction () {
+  let res = 0
+  for (let index = 0; index < 100; index++) {
+    res += index
+  }
+  return res
+}
+function twentyfourFunctionImproved (param = 0) {
+  let res = 0
+  for (let index = 0; index < param; index++) {
+    res += index    
+  }
+  return res
+}
+twentyfour.onclick = () => alert(twentyfourFunction())
+twentyfourimproved.onclick = () => alert(twentyfourFunctionImproved(65))
+
+/**
+ * 14 Skriv en funktion som tar en sträng som parameter och 
+ * returnerar strängen baklänges. Tips: använd funktionen 
+ * string.charAt.
+ */
+function twentyfiveFunction (str) {
+  // Behövs ej charAt, JavaScript strängar kan kommas åt med bracket notation:
+
+  // let res = ''
+  // for (let index = str.length - 1; index >= 0; index--) {
+  //   res += str[index]
+  // }
+  // return res
+
+  return str.split('').reverse().join('')
+}
+twentyfive.onclick = () => alert(twentyfiveFunction('baklänges'))
