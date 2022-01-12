@@ -708,3 +708,48 @@ function thirtyoneFunction (arr, index = 0) {
   }
 }
 thirtyone.onclick = () => alert(thirtyoneFunction([23,4,5,19,4,7,3,1,100,0.1,50,3,2]))
+
+/**
+ * 20 Skriv en rekursiv funktion som ändrar bakgrundsfärgen på alla 
+ * element som finns inuti ett visst element. Funktionen behöver två 
+ * parametrar: färgen och ett DOM-element, som du hämtar med 
+ * getElementById.
+ * @param {string} color 
+ * @param {HTMLDivElement} element 
+ */
+function thirtytwoFunction(color, element) {
+  if (element.firstElementChild) {
+    thirtytwoFunction(color, element.firstElementChild)
+    element.firstElementChild.style.backgroundColor = color
+  }
+
+  if (element.nextElementSibling) {
+    thirtytwoFunction(color, element.nextElementSibling)
+    element.style.backgroundColor = color
+  }
+} // This one sucks! Must be a better way of doing this.
+thirtytwo.onclick = () => thirtytwoFunction('turquoise', document.body)
+
+/**
+ * 21 Skriv en rekursiv funktion som tar ett DOM-element och en 
+ * sträng som parametrar. Den ska returnera true om strängen finns 
+ * som text någonstans inuti elementet. Glöm inte att kontrollera 
+ * eventuella child elements. Om det till exempel handlar om ett
+ * ul-element så behöver man kontrollera alla li-element också.
+ * @param {string} color 
+ * @param {HTMLDivElement} element 
+ */
+function thirtythreeFunction(element, str) {
+  if (element.textContent === str) return { found: true, element }
+
+  if (element.firstElementChild) {
+    return thirtythreeFunction(element.firstElementChild, str)
+  }
+
+  if (element.nextElementSibling) {
+    return thirtythreeFunction(element.nextElementSibling, str)
+  }
+
+  return { found:false }
+}
+thirtythree.onclick = () => console.log(thirtythreeFunction(document.body, 'Thirty Three'))
